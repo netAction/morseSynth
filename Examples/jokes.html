@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta name="viewport" content="width=device-width" />
+<meta charset="utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<script src="../morseSynth.js"></script>
+</head>
+<body>
+<h1>Man goes to doctor...</h1>
+
+<p>Adding a joke in Morse code to the site is very simple.</p>
+
+<h2>Example 1</h2>
+<p>Click play and listen to the joke.</p>
+<p><button onclick="joke1.play(' What is Bruce Lees favorite drink? Wataaaaah!');">play</button>
+<button onclick="joke1.stop();">stop</button></p>
+
+<h2>Example 2</h2>
+<p>Adjust speed from 25WPM with Farnsworth timing up to 50WPM.</p>
+
+<p><input type="range" id="joke2speed" min="1" max="6" value="1"><span id="joke2speeddisplay">25WPM, Farnsworth 5</span>
+<button id="joke2play">play</button>
+<button id="joke2stop">stop</button></p>
+
+<h2>Example 3</h2>
+<p>There are three more jokes.</p>
+
+<p>Joke number:
+<select id="joke3number">
+<option>1</option><option>2</option><option>3</option>
+</select>
+
+Speed:
+<select id="joke3speed">
+<option>slow</option><option>medium</option><option>fast</option>
+</select>
+
+<button id="joke3play">play</button>
+<button id="joke3stop">stop</button></p>
+
+<script type="text/javascript">
+var joke1 = new morseSynth();
+joke1.farnsworth = 3;
+
+
+var joke2 = new morseSynth();
+joke2.farnsworth = 5;
+joke2.speed(25);
+document.getElementById('joke2speed').value = 1;
+document.getElementById('joke2speed').addEventListener('change', function() {
+	var farnsworth, speed;
+	switch (document.getElementById('joke2speed').value) {
+		case "1": farnsworth=5; speed=25; break;
+		case "2": farnsworth=3; speed=25; break;
+		case "3": farnsworth=0; speed=25; break;
+		case "4": farnsworth=0; speed=30; break;
+		case "5": farnsworth=0; speed=40; break;
+		case "6": farnsworth=0; speed=50; break;
+	}
+	joke2.farnsworth = farnsworth;
+	joke2.speed(speed);
+	document.getElementById('joke2speeddisplay').innerHTML =
+		speed+'WPM, Farnsworth '+farnsworth;
+}, false);
+document.getElementById('joke2play').addEventListener('click', function() {
+	joke2.play("Learn sign language. Its very handy.");
+}, false);
+document.getElementById('joke2stop').addEventListener('click', function() {
+	joke2.stop();
+}, false);
+
+
+var joke3 = new morseSynth();
+joke3.farnsworth = 5;
+joke3.speed(25);
+document.getElementById('joke3number').value = 1;
+document.getElementById('joke3speed').value = 'slow';
+document.getElementById('joke3speed').addEventListener('change', function() {
+	var farnsworth, speed;
+	switch (document.getElementById('joke3speed').value) {
+		case "slow": farnsworth=5; speed=25; break;
+		case "medium": farnsworth=0; speed=25; break;
+		case "fast": farnsworth=0; speed=35; break;
+	}
+	joke3.farnsworth = farnsworth;
+	joke3.speed(speed);
+}, false);
+document.getElementById('joke3number').addEventListener('change', function() {
+	joke3.stop();
+}, false);
+document.getElementById('joke3play').addEventListener('click', function() {
+	switch (document.getElementById('joke3number').value) {
+		case "1": joke3.play("What stays in the corner and travels all over the world? A stamp."); break;
+		case "2": joke3.play("What dog can jump higher than a building? Anydog. Buildings cant jump."); break;
+		case "3": joke3.play("What do you call a fish with no eyes? A fsh."); break;
+	}
+}, false);
+document.getElementById('joke3stop').addEventListener('click', function() {
+	joke3.stop();
+}, false);
+
+</script>
+
+</body>
+</html>
