@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta name="viewport" content="width=device-width" />
+<meta charset="utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<script src="../morseSynth.js"></script>
+</head>
+<body>
+<h1>Morse Lesson 1</h1>
+
+<p>It's the perfect time to learn your first three letters in Morse Code: <strong>A</strong>, <strong>E</strong> and <strong>R</strong>. Click <em>play</em> and listen to the characters while they appear on the screen. After that, take a pen and try writing down what you hear. Congratulations, you just started with an interesting language.</p>
+
+<p><button id="play">play</button> <button id="stop">stop</button></p>
+
+<pre id="message"></pre>
+<script type="text/javascript">
+var morse = new morseSynth();
+morse.farnsworth = 5;
+morse.speed(25);
+
+document.getElementById('play').addEventListener('click', function() {
+	if (morse.playing) return;
+	document.getElementById('message').innerHTML = '';
+	var message = '';
+	for (var i=0;i<7;i++) { // seven lines
+		for (j=0;j<5;j++) { // five letters per line
+			character = Math.random();
+			if (character < 1/3) message += 'A';
+			else if (character < 2/3) message += 'E';
+			else message += 'R';
+		}
+		message += '\n';
+	}
+	morse.play(message);
+}, false);
+document.getElementById('stop').addEventListener('click', function() {
+	morse.stop();
+}, false);
+morse.characterCallbacks.push(function(character){
+	document.getElementById('message').innerHTML += character;
+});
+morse.messageCallbacks.push(function(){
+	document.getElementById('message').innerHTML += "\n<strong>DONE!</strong>";
+});
+</script>
+</body>
+</html>

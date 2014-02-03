@@ -40,13 +40,13 @@ Abort playback of the message if still playing, but finish current character fir
 In many cases you need to know which character will be played next. You can register multiple functions that will be called on each character.
 
     morse.characterCallbacks.push(function(character){
-      document.body.innerHTML = document.body.innerHTML + character;
+      document.body.innerHTML += character;
     });
 
 This is the same but will be called when the whole message has been sent.
 
     morse.messageCallbacks.push(function(){
-      document.body.innerHTML = document.body.innerHTML + " <strong>DONE!</strong>";
+      document.body.innerHTML += " <strong>DONE!</strong>";
     });
 
 If you need to know if the morse code is playing check the boolean *morse.playing*.

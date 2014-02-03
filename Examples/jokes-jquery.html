@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta name="viewport" content="width=device-width" />
+<meta charset="utf-8" />
+<link rel="stylesheet" href="style.css" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="../morseSynth.js"></script>
+
+<script type="text/javascript">
+// This is the same as jokes.js but in jQuery.
+
+var joke1 = new morseSynth();
+var joke2 = new morseSynth();
+var joke3 = new morseSynth();
+
+$(function() {
+
+joke1.farnsworth = 3;
+$('#joke1play').click(function() {
+	joke1.play(' What is Bruce Lees favorite drink? Wataaaaah!');
+});
+$('#joke1stop').click(function() {
+	joke1.stop();
+});
+
+
+$('#joke2speed').val(1).change(function() {
+	var farnsworth, speed;
+	switch ($('#joke2speed').val()) {
+		case "1": farnsworth=5; speed=25; break;
+		case "2": farnsworth=3; speed=25; break;
+		case "3": farnsworth=0; speed=25; break;
+		case "4": farnsworth=0; speed=30; break;
+		case "5": farnsworth=0; speed=40; break;
+		case "6": farnsworth=0; speed=50; break;
+	}
+	joke2.farnsworth = farnsworth;
+	joke2.speed(speed);
+	$('#joke2speeddisplay').html(speed+'WPM, Farnsworth '+farnsworth);
+}).change();
+$('#joke2play').click(function() {
+	joke2.play(' Learn sign language. Its very handy.');
+});
+$('#joke2stop').click(function() {
+	joke2.stop();
+});
+
+
+$('#joke3speed').val("slow").change(function() {
+	var farnsworth, speed;
+	switch ($('#joke3speed').val()) {
+		case "slow": farnsworth=5; speed=25; break;
+		case "medium": farnsworth=0; speed=25; break;
+		case "fast": farnsworth=0; speed=35; break;
+	}
+	joke3.farnsworth = farnsworth;
+	joke3.speed(speed);
+}).change();
+
+$('#joke3number').val("1").change(function() {
+	joke3.stop();
+});
+$('#joke3play').click(function() {
+	switch ($('#joke3number').val()) {
+		case "1": joke3.play(" What stays in the corner and travels all over the world? A stamp."); break;
+		case "2": joke3.play(" What dog can jump higher than a building? Anydog. Buildings cant jump."); break;
+		case "3": joke3.play(" What do you call a fish with no eyes? A fsh."); break;
+	}
+});
+$('#joke3stop').click(function() {
+	joke3.stop();
+});
+});
+</script>
+
+</head>
+<body>
+<h1>Man goes to doctor...</h1>
+
+<p>Adding a joke to the site is very simple.</p>
+
+<h2>Example 1</h2>
+<p>Click play and listen to the joke.</p>
+<p><button id="joke1play">play</button>
+<button id="joke1stop">stop</button></p>
+
+<h2>Example 2</h2>
+<p>Adjust speed from 25WPM with Farnsworth timing up to 50WPM.</p>
+
+<p><input type="range" id="joke2speed" min="1" max="6" value="1"><span id="joke2speeddisplay"></span>
+<button id="joke2play">play</button>
+<button id="joke2stop">stop</button></p>
+
+<h2>Example 3</h2>
+<p>There are three more jokes.</p>
+
+<p>Joke number:
+<select id="joke3number">
+<option>1</option><option>2</option><option>3</option>
+</select>
+
+Speed:
+<select id="joke3speed">
+<option>slow</option><option>medium</option><option>fast</option>
+</select>
+
+<button id="joke3play">play</button>
+<button id="joke3stop">stop</button></p>
+
+
+
+</body>
+</html>
