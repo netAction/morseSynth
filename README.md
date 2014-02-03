@@ -15,6 +15,17 @@ Play a message:
     morse.play('Hello World.');
 
 
+
+## Examples
+
+Play a joke on a web site with adjustable playback speed: [jokes.html](http://netaction.github.io/morseSynth/Examples/jokes.html)
+
+Same in jQuery: [jokes-jquery.html](http://netaction.github.io/morseSynth/Examples/jokes-jquery.html)
+
+Simple morse code trainer: [lesson1.html](http://netaction.github.io/morseSynth/Examples/lesson1.html)
+
+
+
 ## Options
 
 Change speed, default = 25WPM (words per minute).
@@ -53,6 +64,8 @@ If you need to know if the morse code is playing check the boolean *morse.playin
 
 To change the message while playing set a new string to *morse.message*. This variable always contains the rest of the message.
 
+
+
 ## Ideas
 
 * Repeat morse code in plain text using *speech synthesis* like "CQ CQ from Delta Delta One Tango Sierra". When training handwriting or for learning without looking on the screen this could be nice. There are both speech synthesis libraries for browsers (bad quality) and web services providing WAV files for instant download (good quality).
@@ -60,4 +73,3 @@ To change the message while playing set a new string to *morse.message*. This va
 * Add some *QRM noise* and fading of frequency and volume while playback using a loop and a random generator while playback.
 
 * Emulate a *PileUp* by starting multiple morseSynth instances at once.
-
