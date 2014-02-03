@@ -22,7 +22,7 @@ Play a joke on a web site with adjustable playback speed: [jokes.html](http://ne
 
 Same in jQuery: [jokes-jquery.html](http://netaction.github.io/morseSynth/Examples/jokes-jquery.html)
 
-Simple morse code trainer: [lesson1.html](http://netaction.github.io/morseSynth/Examples/lesson1.html)
+Simple morse code trainer for beginners: [lesson1.html](http://netaction.github.io/morseSynth/Examples/lesson1.html)
 
 
 
