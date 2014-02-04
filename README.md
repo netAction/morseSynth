@@ -72,4 +72,7 @@ To change the message while playing set a new string to *morse.message*. This va
 
 * Add some *QRM noise* and fading of frequency and volume while playback using a loop and a random generator while playback.
 
-* Emulate a *PileUp* by starting multiple morseSynth instances at once.
+* Emulate a *PileUp* by starting multiple morseSynth instances at once. *Caution!* To prevent overmodulation, the sum of the volumes should not exceed 1.
+
+
+
