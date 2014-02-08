@@ -115,6 +115,7 @@ function morseSynth() {
 		'<HH>':'········', // Error
 
 		' ':' ',
+		'>':'    ', // "visible" pause before message
 		'\t':'  ',
 		'\n':'   ',
 
